@@ -1,0 +1,81 @@
+.input-group.equal-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.input-group.equal-row label {
+  flex: 1 1 50%;
+  text-align: left;
+  padding-left: 0.5rem;
+  margin-bottom: 0; /* remove default label margin */
+}
+
+.input-group.equal-row input {
+  flex: 1 1 50%;
+  min-width: 0; /* prevent overflow in flex */
+}
+
+/* Stack on small screens */
+@media (max-width: 576px) {
+  .input-group.equal-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .input-group.equal-row label {
+    text-align: left;
+    padding-left: 0;
+  }
+  .input-group.equal-row input {
+    width: 100%;
+  }
+}
+
+/* Floating placeholder styles */
+.float-group {
+  position: relative;
+}
+
+.float-group input,
+.float-group select {
+  padding-top: 1.25rem; /* space for the floating label */
+}
+
+.float-group .float-label {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.15s ease-in-out;
+  pointer-events: none;
+  color: #6c757d;
+  background: transparent;
+  padding: 0 0.25rem;
+}
+
+/* Float the label when input/select is focused or contains a value */
+.float-group input:focus + .float-label,
+.float-group select:focus + .float-label,
+.float-group input.has-value + .float-label,
+.float-group select.has-value + .float-label,
+.float-group input:not(:placeholder-shown) + .float-label {
+  top: -0.55rem;
+  left: 0.6rem;
+  font-size: 0.85rem;
+  background: #fff;
+  color: #495057;
+  transform: none;
+  padding: 0 0.25rem;
+}
+
+/* Mobile tweaks */
+@media (max-width: 576px) {
+  .float-group input,
+  .float-group select {
+    padding-top: 0.9rem;
+  }
+  .float-group .float-label {
+    left: 0.7rem;
+  }
+}
