@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 const Home = ({ onLogout }) => {
     return (
         <>
-        <div className="container-fluid w-100 border">
+        <div className="container-fluid w-100 ">
             {/* Navbar */}
             <Navbar onLogout={onLogout} />
 

@@ -18,7 +18,7 @@ const LogIn = ({ onSwitch }) => {
             return
         }
         setError('')
-        // on successful login, redirect to home view
+       
         onSwitch && onSwitch('home')
     }
 
