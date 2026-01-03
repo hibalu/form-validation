@@ -51,12 +51,12 @@ const Form: React.FC<{ onSwitch?: (view: 'login' | 'signup') => void }> = ({ onS
     }
   }
   return (
-    <div className="container w-50 mt-5">
-        
-      <form className="form" noValidate onSubmit={handleSubmit}>
-       
-        <div className="form-control d-flex flex-column gap-3 p-4 border border-2 rounded">
-             <h2>Registration Form</h2>
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-12 col-sm-10 col-md-8 col-lg-6 mt-5">
+          <form className="form" noValidate onSubmit={handleSubmit}>
+            <div className="form-control d-flex flex-column gap-3 p-4 border border-2 rounded">
+              <h2>Registration Form</h2>
           <div className="input-group equal-row">
             <div className="float-group w-100">
               <input
@@ -172,6 +172,8 @@ const Form: React.FC<{ onSwitch?: (view: 'login' | 'signup') => void }> = ({ onS
         </div>
       </form>
     </div>
+  </div>
+  </div>
   )
 }
 
