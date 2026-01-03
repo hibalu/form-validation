@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import './form.css'
 
-const Form = () => {
+const Form: React.FC<{ onSwitch?: (view: 'login' | 'signup') => void }> = ({ onSwitch }) => {
   const [values, setValues] = useState({ username: '', email: '', phone: '', gender: '', password: '', confirmPassword: '' })
   const [touched, setTouched] = useState({ username: false, email: false, phone: false, gender: false, password: false, confirmPassword: false })
   const [submitted, setSubmitted] = useState(false)
+  const [showPasswords, setShowPasswords] = useState(false)
 
   const validate = (vals: { username: string; email: string; phone: string; gender: string; password: string; confirmPassword: string }) => {
     const errors: { [key: string]: string } = {}
@@ -45,9 +46,10 @@ const Form = () => {
       setValues({ username: '', email: '', phone: '', gender: '', password: '', confirmPassword: '' })
       setTouched({ username: false, email: false, phone: false, gender: false, password: false, confirmPassword: false })
       setSubmitted(false)
+      // switch back to login after successful registration
+      onSwitch && onSwitch('login')
     }
   }
-
   return (
     <div className="container w-50 mt-5">
         
@@ -133,7 +135,7 @@ const Form = () => {
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                type="password"
+                type={showPasswords ? 'text' : 'password'}
                 placeholder=" "
                 className={`form-control rounded ${values.password ? 'has-value' : ''} ${touched.password && errors.password ? 'is-invalid' : touched.password && !errors.password ? 'is-valid' : ''}`}
                 aria-describedby="passwordHelp"
@@ -150,7 +152,7 @@ const Form = () => {
                 value={values.confirmPassword}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                type="password"
+                type={showPasswords ? 'text' : 'password'}
                 placeholder=" "
                 className={`form-control rounded ${values.confirmPassword ? 'has-value' : ''} ${touched.confirmPassword && errors.confirmPassword ? 'is-invalid' : touched.confirmPassword && !errors.confirmPassword ? 'is-valid' : ''}`}
                 aria-describedby="confirmPasswordHelp"
@@ -160,7 +162,13 @@ const Form = () => {
             </div>
           </div>
 
+          <div className="form-check mt-2">
+            <input className="form-check-input" type="checkbox" value="" id="showPasswords" checked={showPasswords} onChange={e => setShowPasswords(e.target.checked)} />
+            <label className="form-check-label" htmlFor="showPasswords">Show passwords</label>
+          </div>
+
           <button type="submit" className={`btn btn-primary mt-3 ${!isFormValid ? 'disabled' : ''}`} disabled={!isFormValid} aria-disabled={!isFormValid}>Register</button>
+          <div className="mt-2"><small>Already have an account? <button type="button" className="btn btn-link p-0" onClick={() => onSwitch && onSwitch('login')}>Log in</button></small></div>
         </div>
       </form>
     </div>
