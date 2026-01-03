@@ -4,22 +4,26 @@ import Form from './form'
 import LogIn from './LogIn'
 import Home from './Home'
 import { useState } from 'react'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 function App() {
   const [view, setView] = useState('login')
 
   return (
-    
-        <div className="container-fluid w-100">
-          <div className="card w-50 mx-auto my-5 shadow">
-            <div className="card-body">
-              {view === 'login' && <LogIn onSwitch={(v) => setView(v)} />}
-              {view === 'signup' && <Form onSwitch={(v) => setView(v)} />}
-              {view === 'home' && <Home onLogout={() => setView('login')} />}
-            </div>
-          </div>
+
+    <div className="container-fluid w-100">
+      <Navbar onLogout={() => setView('login')} />
+      <div className={`card mx-auto my-5 shadow ${view === 'home' ? 'w-100 border-0 bg-transparent' : ''}`} style={view === 'home' ? { maxWidth: 'none' } : { maxWidth: 900 }}>
+        <div className="card-body">
+          {view === 'login' && <LogIn onSwitch={(v) => setView(v)} />}
+          {view === 'signup' && <Form onSwitch={(v) => setView(v)} />}
+          {view === 'home' && <Home onLogout={() => setView('login')} />}
         </div>
-     
+      </div>
+      <Footer />
+    </div>
+
   )
 }
 

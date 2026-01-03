@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./components/Navbar";
+//import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 const Home = ({ onLogout }) => {
@@ -7,7 +7,7 @@ const Home = ({ onLogout }) => {
         <>
         <div className="container-fluid w-100 ">
             {/* Navbar */}
-            <Navbar onLogout={onLogout} />
+          
 
             {/* Hero */}
             <header id="hero" className="bg-primary text-white py-5">
