@@ -39,7 +39,17 @@
 
 .float-group input,
 .float-group select {
-  padding-top: 1.25rem; /* space for the floating label */
+  /* balanced padding so the floating label sits vertically centered */
+  padding: 0.9rem 0.75rem;
+  padding-top: 1.15rem; /* space for the floating label */
+  padding-bottom: 0.9rem;
+  line-height: 1.2;
+}
+
+/* hide native placeholder text (we use the floating label instead) */
+.float-group input::placeholder,
+.float-group select::placeholder {
+  color: transparent;
 }
 
 .float-group .float-label {

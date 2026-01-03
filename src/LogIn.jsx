@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './form.css'
 const LogIn = ({ onSwitch }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -27,14 +28,14 @@ const LogIn = ({ onSwitch }) => {
             <div className="row justify-content-center">
                 <div className="col-12 col-sm-10 col-md-6 col-lg-5 mt-4">
                     <form onSubmit={handleSubmit}>
-                        <div className="form-group ">
-                            <label htmlFor="exampleInputEmail1">Email address</label>
-                            <input value={email} onChange={e => setEmail(e.target.value)} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                        <div className="form-group float-group">
+                            <input value={email} onChange={e => setEmail(e.target.value)} type="email" className={"form-control" + (email ? ' has-value' : '')} id="email" aria-describedby="emailHelp" placeholder=" " />
+                            <label className="float-label" htmlFor="email">Email address</label>
                             <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="exampleInputPassword1">Password</label>
-                            <input value={password} onChange={e => setPassword(e.target.value)} type={showPassword ? 'text' : 'password'} className="form-control" id="exampleInputPassword1" placeholder="Password" />
+                        <div className="form-group float-group">
+                            <input value={password} onChange={e => setPassword(e.target.value)} type={showPassword ? 'text' : 'password'} className={"form-control" + (password ? ' has-value' : '')} id="password" placeholder=" " />
+                            <label className="float-label" htmlFor="password">Password</label>
                         </div>
                         {error && <div className="text-danger mb-2">{error}</div>}
                         <div className="form-group form-check">
