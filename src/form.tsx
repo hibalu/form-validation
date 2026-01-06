@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import './form.css'
+import { useNavigate } from 'react-router-dom'
 
-const Form: React.FC<{ onSwitch?: (view: 'login' | 'signup') => void }> = ({ onSwitch }) => {
+const Form: React.FC = () => {
+  const navigate = useNavigate()
   const [values, setValues] = useState({ username: '', email: '', phone: '', gender: '', password: '', confirmPassword: '' })
   const [touched, setTouched] = useState({ username: false, email: false, phone: false, gender: false, password: false, confirmPassword: false })
   const [submitted, setSubmitted] = useState(false)
@@ -47,7 +49,7 @@ const Form: React.FC<{ onSwitch?: (view: 'login' | 'signup') => void }> = ({ onS
       setTouched({ username: false, email: false, phone: false, gender: false, password: false, confirmPassword: false })
       setSubmitted(false)
       // switch back to login after successful registration
-      onSwitch && onSwitch('login')
+      navigate('/login')
     }
   }
   return (
@@ -168,7 +170,7 @@ const Form: React.FC<{ onSwitch?: (view: 'login' | 'signup') => void }> = ({ onS
           </div>
 
           <button type="submit" className={`btn btn-primary mt-3 ${!isFormValid ? 'disabled' : ''}`} disabled={!isFormValid} aria-disabled={!isFormValid}>Register</button>
-          <div className="mt-2"><small>Already have an account? <button type="button" className="btn btn-link p-0" onClick={() => onSwitch && onSwitch('login')}>Log in</button></small></div>
+          <div className="mt-2"><small>Already have an account? <button type="button" className="btn btn-link p-0" onClick={() => navigate('/login')}>Log in</button></small></div>
         </div>
       </form>
     </div>

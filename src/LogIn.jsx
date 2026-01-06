@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import './form.css'
-const LogIn = ({ onSwitch }) => {
+import { useNavigate } from 'react-router-dom'
+const LogIn = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [showPassword, setShowPassword] = useState(false)
     const [error, setError] = useState('')
+    const navigate = useNavigate()
 
     const validateEmail = (em) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)
 
@@ -20,7 +22,7 @@ const LogIn = ({ onSwitch }) => {
         }
         setError('')
 
-        onSwitch && onSwitch('home')
+        navigate('/home')
     }
 
     return (
@@ -43,7 +45,7 @@ const LogIn = ({ onSwitch }) => {
                             <label className="form-check-label" htmlFor="showPassword">Show password</label>
                         </div>
                         <button type="submit" className="btn btn-primary">Submit</button>
-                        <div className="mt-3"><small>Don't have an account? <button type="button" className="btn btn-link p-0" onClick={() => onSwitch && onSwitch('signup')}>Sign up</button></small></div>
+                        <div className="mt-3"><small>Don't have an account? <button type="button" className="btn btn-link p-0" onClick={() => navigate('/signup')}>Sign up</button></small></div>
                     </form>
                 </div>
             </div>
