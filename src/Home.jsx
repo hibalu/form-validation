@@ -6,7 +6,7 @@ const Home = () => {
     const navigate = useNavigate();
     return (
         <>
-            <div className="container-fluid w-100 ">
+            <div className="container-fluid w-100 mt-3">
                 {/* Hero */}
                 <header id="hero" className="bg-primary text-white py-5">
                     <div className="container">
